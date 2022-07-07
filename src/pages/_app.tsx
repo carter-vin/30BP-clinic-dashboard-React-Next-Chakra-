@@ -1,37 +1,37 @@
-import type { NextPage } from "next";
-import type { AppProps } from "next/app";
-import { ReactElement, ReactNode, useEffect } from "react";
-import { ChakraProvider } from "@chakra-ui/react";
+import type { NextPage } from 'next'
+import type { AppProps } from 'next/app'
+import { ReactElement, ReactNode, useEffect } from 'react'
+import { ChakraProvider } from '@chakra-ui/react'
 
-import "styles/globals.css";
+import 'styles/globals.css'
 
 type NextPageWithLayout = NextPage & {
-  getLayout?: (page: ReactElement) => ReactNode;
-};
+  getLayout?: (page: ReactElement) => ReactNode
+}
 
 type AppPropsWithLayout = AppProps & {
-  Component: NextPageWithLayout;
-};
+  Component: NextPageWithLayout
+}
 
 const MyApp = ({ Component, pageProps }: AppPropsWithLayout) => {
-  const getLayout = Component.getLayout ?? ((page) => page);
+  const getLayout = Component.getLayout ?? ((page) => page)
 
   const apple
-  
+
   useEffect(() => {
-    if (typeof window !== "undefined") {
-      const loader = document.getElementById("splash_screen");
-      if (loader) loader.style.display = "none";
+    if (typeof window !== 'undefined') {
+      const loader = document.getElementById('splash_screen')
+      if (loader) loader.style.display = 'none'
     }
-  }, []);
+  }, [])
 
   const app = (
     <ChakraProvider>
       <Component {...pageProps} />
     </ChakraProvider>
-  );
+  )
 
-  return getLayout(app);
-};
+  return getLayout(app)
+}
 
-export default MyApp;
+export default MyApp
