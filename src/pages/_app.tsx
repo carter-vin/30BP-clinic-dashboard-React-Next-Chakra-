@@ -16,7 +16,7 @@ type AppPropsWithLayout = AppProps & {
 const MyApp = ({ Component, pageProps }: AppPropsWithLayout) => {
   const getLayout = Component.getLayout ?? ((page) => page)
 
-  const apple
+  const apple123445
 
   useEffect(() => {
     if (typeof window !== 'undefined') {

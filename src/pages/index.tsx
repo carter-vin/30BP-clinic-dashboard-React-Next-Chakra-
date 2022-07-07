@@ -1,11 +1,8 @@
-import { Box } from "@chakra-ui/react";
+import { Box } from '@chakra-ui/react'
 
 const Home = () => {
-  return (
-    <Box bg="tomato">
-      Tomato
-    </Box>
-  );
-};
+  const home = 'hellow rold'
+  return <Box bg="tomato">Tomato</Box>
+}
 
-export default Home;
+export default Home
