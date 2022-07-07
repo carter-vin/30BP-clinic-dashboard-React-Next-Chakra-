@@ -23,13 +23,13 @@ const MyApp = ({ Component, pageProps }: AppPropsWithLayout) => {
     }
   }, [])
 
-  const app = (
+  const app = <Component {...pageProps} />
+
+  return (
     <ChakraProvider>
-      <Component {...pageProps} />
+      <>{getLayout(app)}</>
     </ChakraProvider>
   )
-
-  return getLayout(app)
 }
 
 export default MyApp

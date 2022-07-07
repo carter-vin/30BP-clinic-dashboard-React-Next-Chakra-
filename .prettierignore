@@ -1,4 +1,5 @@
 .next
+.swc
 next-env.d.ts
 node_modules
 yarn.lock
