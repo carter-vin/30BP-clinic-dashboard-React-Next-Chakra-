@@ -16,8 +16,6 @@ type AppPropsWithLayout = AppProps & {
 const MyApp = ({ Component, pageProps }: AppPropsWithLayout) => {
   const getLayout = Component.getLayout ?? ((page) => page)
 
-  const apple123445
-
   useEffect(() => {
     if (typeof window !== 'undefined') {
       const loader = document.getElementById('splash_screen')
