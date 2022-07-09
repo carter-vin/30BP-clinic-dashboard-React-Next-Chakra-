@@ -7,9 +7,7 @@ type SEOHeadProps = {
 }
 const SEOHead = (props: SEOHeadProps) => {
   const { title, description } = props
-  const mixedTitle = ` ${title || 'Home'} | ${
-    process.env.NEXT_PUBLIC_APP_NAME
-  } || 30BP-ClINIC`
+  const mixedTitle = ` ${title || 'Home'} | 30BP-ClINIC`
   return (
     <Head>
       <title>{mixedTitle}</title>

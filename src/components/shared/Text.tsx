@@ -2,7 +2,7 @@ import { Text as ChakraText } from '@chakra-ui/react'
 
 interface TextProps {
   variant?: 'h1' | 'h2' | 'h3' | 'h4' | 'h5' | 'h6' | 'p'
-  text: string
+  text: string | number
   [key: string]: string | boolean | React.ReactNode
 }
 
@@ -31,7 +31,7 @@ const Text = (props: TextProps) => {
   }
 
   return (
-    <ChakraText fontSize={getFontSize()} {...props} as={variant}>
+    <ChakraText fontSize={getFontSize()} {...props} as={variant} >
       {text}
     </ChakraText>
   )

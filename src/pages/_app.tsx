@@ -2,6 +2,7 @@ import type { NextPage } from 'next'
 import type { AppProps } from 'next/app'
 import { ReactElement, ReactNode, useEffect } from 'react'
 import { ChakraProvider } from '@chakra-ui/react'
+import { SearchDataProvider } from 'context/useSearchData'
 
 import 'styles/globals.css'
 
@@ -27,7 +28,9 @@ const MyApp = ({ Component, pageProps }: AppPropsWithLayout) => {
 
   return (
     <ChakraProvider>
-      <>{getLayout(app)}</>
+      <SearchDataProvider>
+        <>{getLayout(app)}</>
+      </SearchDataProvider>
     </ChakraProvider>
   )
 }

@@ -1,94 +1,92 @@
-import { Stack, Flex } from '@chakra-ui/react'
+import { Stack, Flex, Box } from '@chakra-ui/react'
 import { FiAlertCircle } from 'react-icons/fi'
+import moment from 'moment'
 
 import PatientDashboardLayout from 'layout/PatientDashboardLayout'
-
+import Card from 'components/shared/Card'
 import Button from 'components/shared/Button'
 import SEOHead from 'components/shared/SeoHead'
 import Text from 'components/shared/Text'
-import moment from 'moment'
+import OnlineStatus from 'components/OnlineStatus'
+
+import EstimatorTable from 'modules/home/EstimatorTable'
+import UserMiniDetail from 'modules/home/UserMiniDetail'
+import { ItemOverviewType } from 'types/ItemOverview'
+const currentMonth = moment().format('MMM YYYY')
+
+const homeStats: ItemOverviewType[] = [
+  {
+    label: 'Active Patients',
+    value: '4105',
+  },
+  {
+    label: 'BP Reading This Months',
+    value: '65028',
+  },
+  {
+    label: 'Average BP',
+    value: '120/80',
+  },
+  {
+    label: 'Average BP Reading',
+    value: '15.8',
+    footer: 'per month',
+  },
+]
 
 const Home = () => {
   return (
     <>
       <Flex justifyContent="flex-end">
-        <Stack
-          alignItems="center"
-          direction="row"
-          bg="white"
-          boxShadow="md"
-          px={6}
-          py={1}
-          spacing={6}
-          rounded="md"
-        >
-          <Stack alignItems="center" direction="row" color="red">
-            <FiAlertCircle size={25} />
-            <Text
-              text="15 patients"
-              textTransform="capitalize"
-              fontWeight="bold"
-            />
+        <Card size="sm">
+          <Stack alignItems="center" direction="row" spacing={6}>
+            <Stack alignItems="center" direction="row" color="red">
+              <FiAlertCircle size={25} />
+              <Text
+                text="15 patients"
+                textTransform="capitalize"
+                fontWeight="bold"
+              />
+            </Stack>
+            <Button label="View Patients" variant="ghost" />
           </Stack>
-          <Button label="View Patients" variant="ghost" />
-        </Stack>
+        </Card>
       </Flex>
-      <Stack
-        bg="white"
-        boxShadow="md"
-        rounded="md"
-        p={6}
-        direction="row"
-        alignItems="center"
-        justifyContent="space-between"
-      >
-        <Stack spacing={0}>
-          <Text text="Overview of Patients" fontWeight="bold" variant="h4" />
-          <Text
-            text={moment().format('MMM YYYY')}
-            fontWeight="bold"
-            variant="h4"
-          />
-        </Stack>
-        <Stack direction="row" justifyContent="center" spacing={16}>
-          <Stack spacing={0} alignItems="center">
-            <Text
-              text="Active Patients"
-              color="black"
-              variant="p"
-              fontStyle="italic"
-            />
-            <Text text="4,105" fontWeight="400" variant="h1" />
-          </Stack>
-          <Stack spacing={0} alignItems="center">
-            <Text
-              text="BP Reading This Month"
-              color="black"
-              variant="p"
-              fontStyle="italic"
-            />
-            <Text text="65,028" fontWeight="400" variant="h1" />
-          </Stack>
-          <Stack spacing={0} alignItems="center">
-            <Text
-              text="Average BP"
-              color="black"
-              variant="p"
-              fontStyle="italic"
-            />
-            <Text text="120/80" fontWeight="400" variant="h1" />
-          </Stack>
-          <Stack spacing={0} alignItems="center">
-            <Text
-              text="Average BP Reading"
-              color="black"
-              variant="p"
-              fontStyle="italic"
-            />
-            <Text text="15.8" fontWeight="400" variant="h1" />
-          </Stack>
-        </Stack>
-        <Button label="Generate Report" variant="outline" />
+      <UserMiniDetail stats={homeStats} />
+      <Stack direction="row" justifyContent="space-between" spacing={6}>
+        <Box flex={1}>
+          <Card>
+            <Stack>
+              <Text
+                text={`Patients BP Measurements - ${currentMonth}`}
+                variant="h6"
+                fontWeight="bold"
+              />
+            </Stack>
+          </Card>
+        </Box>
+        <Box flex={1}>
+          <Card>
+            <Stack spacing={8}>
+              <Flex justifyContent="space-between" alignItems="center">
+                <Text
+                  text={`CPT Estimator - ${currentMonth}`}
+                  variant="h6"
+                  fontWeight="bold"
+                />
+                <Flex alignItems="center" gap={6}>
+                  <Text
+                    text="EST. Funding Status"
+                    variant="h6"
+                    fontWeight="bold"
+                  />
+                  <OnlineStatus online />
+                </Flex>
+              </Flex>
+              <EstimatorTable />
+            </Stack>
+          </Card>
+        </Box>
       </Stack>
     </>
   )

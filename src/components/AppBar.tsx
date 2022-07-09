@@ -11,8 +11,11 @@ import {
 import { FiSearch } from 'react-icons/fi'
 import Text from './shared/Text'
 import Button from './shared/Button'
+import { useSearchData } from 'context/useSearchData'
+import Link from 'next/link'
 
 const AppBar = () => {
+  const { searchQuery, handleSearch } = useSearchData()
   return (
     <Flex
       display="flex"
@@ -22,11 +25,29 @@ const AppBar = () => {
       py={3}
       px={16}
       boxShadow="base"
+      position="sticky"
+      top={0}
+      left={0}
+      zIndex={99}
+      width="100%"
     >
       <Stack direction="row" spacing={8} alignItems="center">
-        <Box>
-          <Text text="ABC Clinic" variant="h6" fontWeight="bold" />
-        </Box>
+        <Link href="/" passHref>
+          <Flex
+            alignItems="center"
+            justifyContent="center"
+            cursor="pointer"
+            gap={2}
+          >
+            <Image
+              boxSize="40px"
+              objectFit="cover"
+              src="/logo.png"
+              alt="ABC Clini"
+            />
+            <Text text="ABC Clinic" variant="h6" fontWeight="bold" />
+          </Flex>
+        </Link>
         <Box>
           <InputGroup
             size="md"
@@ -39,6 +60,8 @@ const AppBar = () => {
           >
             <Input
               placeholder="Search by patient name or email address"
+              value={searchQuery}
+              onChange={(e) => handleSearch(e.target.value)}
               _focus={{
                 borderColor: 'none',
                 outline: 'none',
@@ -50,15 +73,13 @@ const AppBar = () => {
       </Stack>
       <Stack direction="row" spacing={16}>
         <Button label="Prepare Claim Docs" />
-        <Box>
-          <Image
-            boxSize="40px"
-            borderRadius="full"
-            objectFit="cover"
-            src="https://bit.ly/dan-abramov"
-            alt="Dan Abramov"
-          />
-        </Box>
+        <Image
+          boxSize="40px"
+          borderRadius="full"
+          objectFit="cover"
+          src="https://bit.ly/dan-abramov"
+          alt="Dan Abramov"
+        />
       </Stack>
     </Flex>
   )
