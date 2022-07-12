@@ -20,7 +20,10 @@ const options = {
   markers: {
     size: 8,
   },
-
+  stroke: {
+    show: true,
+    width: 2,
+  },
   xaxis: {
     title: {
       text: 'Diastolic',
@@ -29,9 +32,6 @@ const options = {
   },
   toolbar: {
     autoSelected: 'zoom',
-  },
-  stroke: {
-    curve: 'smooth',
   },
   tooltip: {
     custom: function ({ seriesIndex, dataPointIndex, w }: any) {
@@ -102,9 +102,7 @@ const LineChart = () => {
   ])
   return (
     <div className="mixed-chart">
-      {typeof window !== 'undefined' && (
-        <Chart type="line" options={options} series={series} />
-      )}
+      <Chart type="line" options={options} series={series} />
     </div>
   )
 }

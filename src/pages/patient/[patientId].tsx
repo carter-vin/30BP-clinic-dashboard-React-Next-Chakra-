@@ -1,3 +1,4 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 import { Stack, Flex, Box, Center } from '@chakra-ui/react'
 
 import Text from 'components/shared/Text'
