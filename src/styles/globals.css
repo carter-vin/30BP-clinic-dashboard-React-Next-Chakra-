@@ -6,3 +6,18 @@
   box-sizing: border-box;
 }
 
+.apex-tooltip{
+  padding: 1rem;
+  display: flex;
+  flex-direction: column;
+  gap: .3rem;
+}
+
+.apex-tooltip li {
+  text-decoration: none;
+  list-style: none;
+  display: flex;
+  justify-items: center;
+  align-items: center;
+  gap: .3rem
+}

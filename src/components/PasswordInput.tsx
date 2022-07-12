@@ -1,16 +1,28 @@
 /* eslint-disable react/no-children-prop */
-import { InputGroup, InputLeftElement, Input, Stack } from '@chakra-ui/react'
+import {
+  InputGroup,
+  InputLeftElement,
+  Input,
+  FormControl,
+  FormLabel,
+  FormErrorMessage,
+} from '@chakra-ui/react'
 import { useState } from 'react'
 import { AiOutlineEye, AiOutlineEyeInvisible } from 'react-icons/ai'
-import Text from './shared/Text'
 
-const PasswordInput = () => {
+interface PasswordInputprops {
+  name: string
+  value: string
+  onChange: (e: React.ChangeEvent<HTMLInputElement>) => void
+  isInvalid?: boolean
+  errorMsg?: string
+}
+const PasswordInput = (props: PasswordInputprops) => {
+  const { name, value, onChange, isInvalid, errorMsg } = props
   const [passwordVisisble, setPasswordVisible] = useState<boolean>(false)
   return (
-    <Stack spacing={2}>
-      <label htmlFor="password">
-        <Text text="Password" fontWeight="bold" />
-      </label>
+    <FormControl isInvalid={isInvalid}>
+      <FormLabel htmlFor={name}>Password</FormLabel>
       <InputGroup>
         <InputLeftElement
           onClick={() => setPasswordVisible(!passwordVisisble)}
@@ -26,9 +38,13 @@ const PasswordInput = () => {
         <Input
           type={passwordVisisble ? 'text' : 'password'}
           placeholder="********"
+          name={name}
+          value={value}
+          onChange={onChange}
         />
       </InputGroup>
-    </Stack>
+      {isInvalid && errorMsg && <FormErrorMessage>{errorMsg}</FormErrorMessage>}
+    </FormControl>
   )
 }
 

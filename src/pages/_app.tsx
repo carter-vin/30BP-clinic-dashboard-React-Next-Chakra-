@@ -5,9 +5,11 @@ import { ChakraProvider } from '@chakra-ui/react'
 import { SearchDataProvider } from 'context/useSearchData'
 
 import 'styles/globals.css'
+import { AuthProvider } from 'context/useAuth'
 
 type NextPageWithLayout = NextPage & {
   getLayout?: (page: ReactElement) => ReactNode
+  requiresAuth?: boolean
 }
 
 type AppPropsWithLayout = AppProps & {
@@ -28,9 +30,11 @@ const MyApp = ({ Component, pageProps }: AppPropsWithLayout) => {
 
   return (
     <ChakraProvider>
-      <SearchDataProvider>
-        <>{getLayout(app)}</>
-      </SearchDataProvider>
+      <AuthProvider>
+        <SearchDataProvider>
+          <>{getLayout(app)}</>
+        </SearchDataProvider>
+      </AuthProvider>
     </ChakraProvider>
   )
 }

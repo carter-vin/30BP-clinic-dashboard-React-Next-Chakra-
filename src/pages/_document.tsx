@@ -1,17 +1,18 @@
-import { ColorModeScript } from "@chakra-ui/react";
+import { ColorModeScript } from '@chakra-ui/react'
+import SplashScreen from 'components/SplashScreen'
 import Document, {
   Html,
   Head,
   Main,
   NextScript,
   DocumentContext,
-} from "next/document";
+} from 'next/document'
 
 export default class MyDocument extends Document {
   static async getInitialProps(ctx: DocumentContext) {
-    const initialProps = await Document.getInitialProps(ctx);
+    const initialProps = await Document.getInitialProps(ctx)
 
-    return initialProps;
+    return initialProps
   }
   render() {
     return (
@@ -26,13 +27,13 @@ export default class MyDocument extends Document {
         </Head>
         <body>
           <div id="splash_screen">
-            <p>loading</p>
+            <SplashScreen />
           </div>
           <ColorModeScript />
           <Main />
           <NextScript />
         </body>
       </Html>
-    );
+    )
   }
 }

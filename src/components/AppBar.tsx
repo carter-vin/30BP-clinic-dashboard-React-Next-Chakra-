@@ -7,15 +7,35 @@ import {
   Input,
   InputGroup,
   InputRightAddon,
+  Menu,
+  MenuList,
+  MenuItem,
+  MenuButton,
 } from '@chakra-ui/react'
 import { FiSearch } from 'react-icons/fi'
 import Text from './shared/Text'
 import Button from './shared/Button'
 import { useSearchData } from 'context/useSearchData'
 import Link from 'next/link'
+import { useAuth } from 'context/useAuth'
+import { useRouter } from 'next/router'
 
 const AppBar = () => {
   const { searchQuery, handleSearch } = useSearchData()
+  const { logout, user } = useAuth()
+  const router = useRouter()
+
+  const navigateToSearch = () => {
+    router.push('/search')
+  }
+
+  const handleKeyDown = (event: { key: string }) => {
+    console.log('User pressed: ', event.key)
+    if (event.key === 'Enter') {
+      navigateToSearch()
+    }
+  }
+
   return (
     <Flex
       display="flex"
@@ -48,7 +68,7 @@ const AppBar = () => {
             <Text text="ABC Clinic" variant="h6" fontWeight="bold" />
           </Flex>
         </Link>
-        <Box>
+        <Box onClick={() => navigateToSearch()}>
           <InputGroup
             size="md"
             borderColor="gray.200"
@@ -61,6 +81,7 @@ const AppBar = () => {
             <Input
               placeholder="Search by patient name or email address"
               value={searchQuery}
+              onKeyDown={handleKeyDown}
               onChange={(e) => handleSearch(e.target.value)}
               _focus={{
                 borderColor: 'none',
@@ -73,13 +94,24 @@ const AppBar = () => {
       </Stack>
       <Stack direction="row" spacing={16}>
         <Button label="Prepare Claim Docs" />
-        <Image
-          boxSize="40px"
-          borderRadius="full"
-          objectFit="cover"
-          src="https://bit.ly/dan-abramov"
-          alt="Dan Abramov"
-        />
+
+        <Menu>
+          <MenuButton>
+            <Image
+              boxSize="40px"
+              borderRadius="full"
+              objectFit="cover"
+              src="https://bit.ly/dan-abramov"
+              alt=""
+            />
+          </MenuButton>
+          <MenuList>
+            {user && user.firstname && (
+              <MenuItem pointerEvents="none">{`${user?.firstname} ${user?.lastname}`}</MenuItem>
+            )}
+            <MenuItem onClick={() => logout()}>Logout</MenuItem>
+          </MenuList>
+        </Menu>
       </Stack>
     </Flex>
   )

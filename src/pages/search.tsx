@@ -82,4 +82,12 @@ Search.getLayout = function getLayout(
   )
 }
 
+export async function getStaticProps() {
+  return {
+    props: {
+      protected: true,
+    },
+  }
+}
+Search.requiresAuth = true
 export default Search

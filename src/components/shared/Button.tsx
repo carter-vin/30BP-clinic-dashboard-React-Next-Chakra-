@@ -1,15 +1,26 @@
 import { Button as ChakraButton } from '@chakra-ui/react'
 
+type functionType = {
+  (): void
+}
+
 interface ButtonProps {
   color?: 'primary' | 'secondary'
   variant?: 'solid' | 'outline' | 'ghost' | 'link'
   label: string
+  onButtonPressed?: () => void
   size?: 'sm' | 'md' | 'lg' | 'xl'
-  [key: string]: string | boolean | React.ReactNode
+  [key: string]: string | boolean | functionType | React.ReactNode
 }
 
 const Button = (props: ButtonProps) => {
-  const { color = 'primary', label, size = 'md', variant = 'solid' } = props
+  const {
+    color = 'primary',
+    label,
+    size = 'md',
+    variant = 'solid',
+    onButtonPressed,
+  } = props
 
   const getButtonColor = () => {
     switch (color) {
@@ -28,6 +39,7 @@ const Button = (props: ButtonProps) => {
       borderRadius="3xl"
       textTransform="capitalize"
       fontWeight="bold"
+      onClick={onButtonPressed && onButtonPressed}
       {...props}
     >
       {label}

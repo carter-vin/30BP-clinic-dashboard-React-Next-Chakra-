@@ -12,6 +12,8 @@ import OnlineStatus from 'components/OnlineStatus'
 import EstimatorTable from 'modules/home/EstimatorTable'
 import UserMiniDetail from 'modules/home/UserMiniDetail'
 import { ItemOverviewType } from 'types/ItemOverview'
+import LineChart from 'components/chart/LineChart'
+
 const currentMonth = moment().format('MMM YYYY')
 
 const homeStats: ItemOverviewType[] = [
@@ -62,6 +64,7 @@ const Home = () => {
                 variant="h6"
                 fontWeight="bold"
               />
+              <LineChart />
             </Stack>
           </Card>
         </Box>

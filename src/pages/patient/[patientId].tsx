@@ -21,6 +21,7 @@ import BpMeasurementTable from 'modules/patients/BpMeasurementTable'
 import Link from 'next/link'
 import Button from 'components/shared/Button'
 import { ItemOverviewType } from 'types/ItemOverview'
+import LineChart from 'components/chart/LineChart'
 
 const patientStats: ItemOverviewType[] = [
   {
@@ -180,6 +181,7 @@ const PatientDetail = () => {
                   fontWeight="bold"
                   variant="h6"
                 />
+                <LineChart />
                 <BpMeasurementTable />
                 <Center>
                   <Link passHref href={`/clinical-notes/123`}>
@@ -205,4 +207,5 @@ PatientDetail.getLayout = function getLayout(
   return <PatientDashboardLayout>{page}</PatientDashboardLayout>
 }
 
+PatientDetail.requiresAuth = true
 export default PatientDetail
