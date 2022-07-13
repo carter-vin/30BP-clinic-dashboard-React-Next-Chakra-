@@ -37,7 +37,7 @@ const PatientDashboardLayout = (props: PatientDashboardLayoutInterface) => {
       position="relative"
     >
       <AppBar />
-      <Stack gap={4} px={16}>
+      <Stack gap={[2, 2, 3, 4]} px={[4, 8, 12, 16]}>
         {children}
       </Stack>
       <Spacer />

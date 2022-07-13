@@ -8,12 +8,14 @@ import { SearcPatientType } from 'types/Patient'
 type SearchContextType = {
   searchQuery: string
   patientSearchResult: any[]
-  handleSearch: (queryParams: string) => void
+  handleSearch: () => void
+  handleSearchQueryChanged: (value: string) => void
 }
 const searchDataContext = createContext<SearchContextType>({
   searchQuery: '',
   patientSearchResult: [],
   handleSearch: () => {},
+  handleSearchQueryChanged: () => {},
 })
 const { Provider } = searchDataContext
 
@@ -30,8 +32,11 @@ const useSearchDataProvider = () => {
     setPatientSearchResult(!searchquery.length ? [] : mockPatient)
   }
 
-  const handleSearch = (queryParams: string) => {
+  const handleSearchQueryChanged = (queryParams: string) => {
     setSearchQuery(queryParams)
+  }
+
+  const handleSearch = () => {
     searchPatients()
     if (!onSearchPage) {
       router.push('/search')
@@ -42,6 +47,7 @@ const useSearchDataProvider = () => {
     searchquery,
     patientSearchResult,
     handleSearch,
+    handleSearchQueryChanged,
   }
 }
 

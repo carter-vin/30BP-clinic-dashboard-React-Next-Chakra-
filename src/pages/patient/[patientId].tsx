@@ -66,7 +66,8 @@ const PatientDetail = () => {
       <Stack spacing={6}>
         <Back backTitle="back to clinic Dashboard" redirect="/" />
         <UserMiniDetail title={patientDetail.name || ''} stats={patientStats} />
-        <Flex
+        <Stack
+          flexDirection={['column', 'column', 'column', 'row']}
           justifyContent="space-between"
           alignContent="flex-start"
           alignItems="flex-start"
@@ -76,7 +77,10 @@ const PatientDetail = () => {
             <Card>
               <Stack>
                 <Text text="Demographic" fontWeight="bold" variant="h6" />
-                <Stack direction="row" justifyContent="justify-between">
+                <Stack
+                  direction={['column', 'column', 'column', 'row']}
+                  justifyContent="justify-between"
+                >
                   <Stack flex={1} spacing={2}>
                     <Stack spacing={2} alignItems="center" direction="row">
                       <Text text="DOB:" />
@@ -131,8 +135,13 @@ const PatientDetail = () => {
                   {[1, 2].map((item, index) => (
                     <>
                       <Stack
-                        direction="row"
-                        alignItems="center"
+                        direction={['column', 'column', 'column', 'row']}
+                        alignItems={[
+                          'flex-start',
+                          'flex-start',
+                          'flex-start',
+                          'center',
+                        ]}
                         justifyContent="space-between"
                         key={index}
                       >
@@ -153,7 +162,16 @@ const PatientDetail = () => {
                           />
                         </Stack>
                         <Link passHref href={`/clinical-notes/123`}>
-                          <Button label="View" variant="outline" width="8vw" />
+                          <Button
+                            label="View"
+                            variant="outline"
+                            width={[
+                              'fit-content',
+                              'fit-content',
+                              'fit-content',
+                              '8vw',
+                            ]}
+                          />
                         </Link>
                       </Stack>
                       <Box bg="gray.300" width="100%" height="2px" />
@@ -172,9 +190,9 @@ const PatientDetail = () => {
               </Stack>
             </Card>
           </Stack>
-          <Stack flex={1}>
+          <Stack flex={1} width="100%">
             <Card>
-              <Stack spacing={6}>
+              <Stack spacing={6} width="100%">
                 <Text
                   text={`BP Measurements - ${formatDateWithMonthYear(
                     '7/8/2022'
@@ -196,7 +214,7 @@ const PatientDetail = () => {
               </Stack>
             </Card>
           </Stack>
-        </Flex>
+        </Stack>
       </Stack>
     </>
   )

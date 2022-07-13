@@ -66,7 +66,11 @@ const columns: Column<BpMeasureDataType>[] = [
       const [bp1, bp2] = bp.split('/')
       const isRisky = parseInt(bp1, 10) > 120 || parseInt(bp2, 10) > 80
       return (
-        <Stack direction="row" alignItems="center" spacing={6}>
+        <Stack
+          direction={['column', 'column', 'column', 'row']}
+          alignItems={['flex-start', 'flex-start', 'flex-start', 'center']}
+          spacing={6}
+        >
           <Text text={bp} />
           {isRisky && (
             <Stack alignItems="center" direction="row" color="red">

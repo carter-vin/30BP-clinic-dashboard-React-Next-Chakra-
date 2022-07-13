@@ -24,36 +24,52 @@ const Search = () => {
             {patientSearchResult.map((patient: SearcPatientType) => (
               <Stack spacing={4} key={patient.id}>
                 <Stack
-                  direction="row"
+                  direction={['column', 'column', 'row', 'row']}
                   justifyContent="space-between"
-                  alignItems="center"
+                  alignItems={['flex-start', 'flex-start', 'center', 'center']}
                 >
-                  <Box flex={1}>
+                  <Box flex={1} display="flex" flexDirection="column" gap={2}>
                     <Text
                       text={patient?.name || ''}
                       variant="p"
                       fontWeight="bold"
                     />
-                    <Stack direction="row" spacing={16}>
-                      <Flex gap={2} color="gray.600">
+                    <Stack direction="row" spacing={[0, 0, 0, 16]}>
+                      <Flex
+                        gap={2}
+                        color="gray.600"
+                        display={['none', 'none', 'none', 'flex']}
+                      >
                         <Text text="DOB:" variant="p" />
                         <Text
                           text={moment().format('MMMM DD, YYYY')}
                           variant="p"
                         />
                       </Flex>
-                      <Flex gap={2} color="gray.600" minW="20vw">
+                      <Flex
+                        gap={2}
+                        color="gray.600"
+                        minW={['fit-content', 'fit-content', '20vw']}
+                      >
                         <Text text="Email:" variant="p" />
                         <Text text={patient?.email || ''} variant="p" />
                       </Flex>
-                      <Flex gap={2} color="gray.600">
+                      <Flex
+                        gap={2}
+                        color="gray.600"
+                        display={['none', 'none', 'none', 'flex']}
+                      >
                         <Text text="Zip Code:" variant="p" />
                         <Text text={patient?.zipcode || ''} variant="p" />
                       </Flex>
                     </Stack>
                   </Box>
                   <Link passHref href={`/patient/${patient.id}`}>
-                    <Button label="View" variant="outline" width="8vw" />
+                    <Button
+                      label="View"
+                      variant="outline"
+                      width={['auto', 'auto', 'auto', '8vw']}
+                    />
                   </Link>
                 </Stack>
                 <Box bg="gray.300" width="100%" height="2px" />

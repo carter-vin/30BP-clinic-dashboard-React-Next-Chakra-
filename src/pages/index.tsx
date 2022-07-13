@@ -41,8 +41,22 @@ const Home = () => {
     <>
       <Flex justifyContent="flex-end">
         <Card size="sm">
-          <Stack alignItems="center" direction="row" spacing={6}>
-            <Stack alignItems="center" direction="row" color="red">
+          <Stack
+            alignItems={['flex-start', 'flex-start', 'flex-start', 'center']}
+            justifyContent={[
+              'flex-start',
+              'flex-start',
+              'flex-start',
+              'center',
+            ]}
+            direction={['column', 'column', 'column', 'row']}
+            spacing={[0, 0, 0, 6]}
+          >
+            <Stack
+              alignItems={['flex-start', 'flex-start', 'flex-start', 'center']}
+              direction="row"
+              color="red"
+            >
               <FiAlertCircle size={25} />
               <Text
                 text="15 patients"
@@ -55,10 +69,15 @@ const Home = () => {
         </Card>
       </Flex>
       <UserMiniDetail stats={homeStats} />
-      <Stack direction="row" justifyContent="space-between" spacing={6}>
+      <Stack
+        direction={['column', 'column', 'column', 'row']}
+        justifyContent="space-between"
+        gap={[2, 3, 4, 6]}
+        width="100%"
+      >
         <Box flex={1}>
           <Card>
-            <Stack>
+            <Stack flex={1}>
               <Text
                 text={`Patients BP Measurements - ${currentMonth}`}
                 variant="h6"
@@ -71,13 +90,32 @@ const Home = () => {
         <Box flex={1}>
           <Card>
             <Stack spacing={8}>
-              <Flex justifyContent="space-between" alignItems="center">
+              <Flex
+                justifyContent="space-between"
+                alignItems={[
+                  'flex-start',
+                  'flex-start',
+                  'flex-start',
+                  'center',
+                ]}
+                gap={2}
+                direction={['column', 'column', 'column', 'row']}
+              >
                 <Text
                   text={`CPT Estimator - ${currentMonth}`}
                   variant="h6"
                   fontWeight="bold"
                 />
-                <Flex alignItems="center" gap={6}>
+                <Flex
+                  alignItems="center"
+                  direction={[
+                    'row-reverse',
+                    'row-reverse',
+                    'row-reverse',
+                    'row',
+                  ]}
+                  gap={6}
+                >
                   <Text
                     text="EST. Funding Status"
                     variant="h6"

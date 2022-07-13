@@ -11,7 +11,10 @@ const NumberingCard = (props: NumberingCard) => {
   const { label, value, footer } = props
 
   return (
-    <Stack spacing={0} alignContent="center" alignItems="center">
+    <Stack
+      spacing={0}
+      alignItems={['flex-start', 'flex-start', 'flex-start', 'center']}
+    >
       <Text text={label} color="black" variant="p" fontStyle="italic" />
       <Text text={value} fontWeight="400" variant="h1" />
       {footer && (

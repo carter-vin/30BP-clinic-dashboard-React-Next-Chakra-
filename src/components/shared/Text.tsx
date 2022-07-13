@@ -12,26 +12,26 @@ const Text = (props: TextProps) => {
   const getFontSize = () => {
     switch (variant) {
       case 'h1':
-        return '5xl'
+        return ['3xl', '3xl', '4xl', '5xl']
       case 'h2':
-        return '4xl'
+        return ['2xl', '2xl', '3xl', '4xl']
       case 'h3':
-        return '3xl'
+        return ['xl', 'xl', '2xl', '3xl']
       case 'h4':
-        return '2xl'
+        return ['lg', 'lg', 'xl', '2xl']
       case 'h5':
-        return 'xl'
+        return ['md', 'md', 'lg', 'xl']
       case 'h6':
-        return 'lg'
+        return ['sm', 'sm', 'md', 'lg']
       case 'p':
-        return 'md'
+        return ['sm', 'md']
       default:
-        return 'md'
+        return ['sm', 'md']
     }
   }
 
   return (
-    <ChakraText fontSize={getFontSize()} {...props} as={variant} >
+    <ChakraText fontSize={getFontSize()} {...props} as={variant}>
       {text}
     </ChakraText>
   )

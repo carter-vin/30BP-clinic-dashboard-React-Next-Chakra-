@@ -17,7 +17,11 @@ const UserMiniDetail = (props: UserMiniDetailProps) => {
   const { title, stats } = props
   return (
     <Card>
-      <Stack direction="row" alignItems="center" justifyContent="space-between">
+      <Stack
+        direction={['column', 'column', 'column', 'row']}
+        alignItems={['flex-start', 'flex-start', 'flex-start', 'center']}
+        justifyContent="space-between"
+      >
         <Stack spacing={0}>
           {title ? (
             <Text text={title} fontWeight="bold" variant="h4" />
@@ -33,10 +37,10 @@ const UserMiniDetail = (props: UserMiniDetailProps) => {
           )}
         </Stack>
         <Stack
-          direction="row"
-          justifyContent="center"
-          alignItems="center"
-          spacing={32}
+          direction={['column', 'column', 'column', 'row']}
+          justifyContent="space-between"
+          alignItems={['flex-start', 'flex-start', 'flex-start', 'center']}
+          spacing={[4, 8, 12, 16]}
         >
           {stats.map((item: ItemOverviewType) => (
             <NumberingCard
