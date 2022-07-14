@@ -88,6 +88,7 @@ const Login = () => {
                 cursor="pointer"
                 color="red.400"
                 fontWeight="bold"
+                textDecoration="underline"
               />
             </ChakraLink>
           </Link>
@@ -101,12 +102,17 @@ const Login = () => {
           justifyContent="space-between"
           alignItems="center"
         >
-          <Checkbox defaultChecked color="gray.600">
+          <Checkbox defaultChecked={false} color="gray.600">
             <Text text="Remember Me" color="gray.600" />
           </Checkbox>
           <Link href="/forget-password" passHref>
             <ChakraLink>
-              <Text text="Forgot Password?" color="gray.600" cursor="pointer" />
+              <Text
+                text="Forgot Password?"
+                color="gray.600"
+                cursor="pointer"
+                textDecoration="underline"
+              />
             </ChakraLink>
           </Link>
         </Flex>

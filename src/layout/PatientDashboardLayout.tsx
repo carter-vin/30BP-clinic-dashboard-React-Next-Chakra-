@@ -1,9 +1,5 @@
-import { Stack, Spacer } from '@chakra-ui/react'
-import AppBar from 'components/AppBar'
-// import SplashScreen from 'components/SplashScreen'
-// import { useAuth } from 'context/useAuth'
-// import { useRouter } from 'next/router'
-// import { useEffect } from 'react'
+import { Stack, Box } from '@chakra-ui/react'
+import Navbar from 'components/Navbar'
 
 interface PatientDashboardLayoutInterface {
   children: React.ReactNode
@@ -11,37 +7,14 @@ interface PatientDashboardLayoutInterface {
 
 const PatientDashboardLayout = (props: PatientDashboardLayoutInterface) => {
   const { children } = props
-  // const { isAuthenticated, isLoading } = useAuth()
-  // const router = useRouter()
-
-  // const handleRouting = () => {
-  //   if (!isAuthenticated) {
-  //     router.push('/login')
-  //   }
-  // }
-
-  // useEffect(() => {
-  //   handleRouting()
-  // }, [])
-
-  // if (isLoading) {
-  //   return <SplashScreen />
-  // }
 
   return (
-    <Stack
-      height="100vh"
-      overflowY="auto"
-      bg="red.50"
-      gap={4}
-      position="relative"
-    >
-      <AppBar />
-      <Stack gap={[2, 2, 3, 4]} px={[4, 8, 12, 16]}>
+    <Box bg="pink.50" minH="100vh" height="100%" position="relative" pb={8}>
+      <Navbar />
+      <Stack spacing={6} px={[4, 8, 16, 32]} pt="10vh">
         {children}
       </Stack>
-      <Spacer />
-    </Stack>
+    </Box>
   )
 }
 

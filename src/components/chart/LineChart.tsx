@@ -1,12 +1,13 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import React, { useState } from 'react'
 import dynamic from 'next/dynamic'
+import { Box } from '@chakra-ui/react'
 const Chart = dynamic(() => import('react-apexcharts'), { ssr: false })
 
 const options = {
   chart: {
     stacked: false,
-    height: 350,
+    padding: 0,
     zoom: {
       enabled: false,
       autoScaleYaxis: true,
@@ -28,7 +29,6 @@ const options = {
     title: {
       text: 'Diastolic',
     },
-    categories: [30, 40, 50, 60, 70, 80, 90, 100, 110, 120],
   },
   toolbar: {
     autoSelected: 'zoom',
@@ -101,9 +101,15 @@ const LineChart = () => {
     },
   ])
   return (
-    <div className="mixed-chart">
-      <Chart type="line" options={options} series={series} />
-    </div>
+    <Box height={[350, 400, 450]}>
+      <Chart
+        type="line"
+        options={options}
+        series={series}
+        width="100%"
+        height="100%"
+      />
+    </Box>
   )
 }
 

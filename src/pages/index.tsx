@@ -39,24 +39,15 @@ const homeStats: ItemOverviewType[] = [
 const Home = () => {
   return (
     <>
-      <Flex justifyContent="flex-end">
+      <Flex justifyContent={['flex-start', 'flex-end']}>
         <Card size="sm">
           <Stack
-            alignItems={['flex-start', 'flex-start', 'flex-start', 'center']}
-            justifyContent={[
-              'flex-start',
-              'flex-start',
-              'flex-start',
-              'center',
-            ]}
-            direction={['column', 'column', 'column', 'row']}
+            alignItems={['center']}
+            justifyContent={['center']}
+            direction={['row']}
             spacing={[0, 0, 0, 6]}
           >
-            <Stack
-              alignItems={['flex-start', 'flex-start', 'flex-start', 'center']}
-              direction="row"
-              color="red"
-            >
+            <Stack alignItems={['center']} direction="row" color="red">
               <FiAlertCircle size={25} />
               <Text
                 text="15 patients"
@@ -75,17 +66,15 @@ const Home = () => {
         gap={[2, 3, 4, 6]}
         width="100%"
       >
-        <Box flex={1}>
-          <Card>
-            <Stack flex={1}>
-              <Text
-                text={`Patients BP Measurements - ${currentMonth}`}
-                variant="h6"
-                fontWeight="bold"
-              />
-              <LineChart />
-            </Stack>
-          </Card>
+        <Box flex={1} bg="white" p="4" boxShadow="md" rounded="lg">
+          <Stack>
+            <Text
+              text={`Patients BP Measurements - ${currentMonth}`}
+              variant="h6"
+              fontWeight="bold"
+            />
+            <LineChart />
+          </Stack>
         </Box>
         <Box flex={1}>
           <Card>

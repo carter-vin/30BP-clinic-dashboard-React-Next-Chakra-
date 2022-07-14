@@ -2,7 +2,6 @@ import { Stack, Image, Box, Flex } from '@chakra-ui/react'
 import Text from 'components/shared/Text'
 import SplashScreen from 'components/SplashScreen'
 import { useAuth } from 'context/useAuth'
-import Link from 'next/link'
 import { useRouter } from 'next/router'
 
 interface AuthlayoutProps {
@@ -38,17 +37,15 @@ const Authlayout = (props: AuthlayoutProps) => {
         <Stack spacing={16}>
           <Stack spacing={8}>
             <Box>
-              <Link href="/" passHref>
-                <Flex alignItems="center" cursor="pointer" gap={2}>
-                  <Image
-                    boxSize="40px"
-                    objectFit="cover"
-                    src="/logo.png"
-                    alt="ABC Clini"
-                  />
-                  <Text text="ABC Clinic" variant="h6" fontWeight="bold" />
-                </Flex>
-              </Link>
+              <Flex alignItems="center" cursor="pointer" gap={2}>
+                <Image
+                  boxSize="80px"
+                  objectFit="cover"
+                  src="/logo.png"
+                  alt="ABC Clini"
+                />
+                <Text text="ABC Clinic" variant="h3" fontWeight="bold" />
+              </Flex>
             </Box>
 
             <Box width="50%">
@@ -70,7 +67,7 @@ const Authlayout = (props: AuthlayoutProps) => {
         display="flex"
         flexDirection="column"
         width="100%"
-        gap={8}
+        gap={4}
         justifyContent="center"
       >
         <Flex
@@ -81,12 +78,12 @@ const Authlayout = (props: AuthlayoutProps) => {
           display={['flex', 'none']}
         >
           <Image
-            boxSize="40px"
+            boxSize="80px"
             objectFit="cover"
             src="/logo.png"
             alt="ABC Clini"
           />
-          <Text text="ABC Clinic" variant="h6" fontWeight="bold" />
+          <Text text="ABC Clinic" variant="h1" fontWeight="bold" />
         </Flex>
         {children}
       </Box>

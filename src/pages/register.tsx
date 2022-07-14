@@ -30,6 +30,7 @@ const Register = () => {
       clininc: '',
       title: '',
       role: '',
+      acceptTerms: false,
     },
     validationSchema: Yup.object({
       firstname: Yup.string().required('Firstname is required'),
@@ -43,14 +44,19 @@ const Register = () => {
       clininc: Yup.string().required('Clininc is required'),
       title: Yup.string().required('Title is required'),
       role: Yup.string().required('Role is required'),
+      acceptTerms: Yup.boolean().oneOf(
+        [true],
+        'You must accept the terms and conditions'
+      ),
     }),
     onSubmit: (values: User) => {
       console.log(values)
     },
   })
+
   return (
     <Card>
-      <Stack spacing={4}>
+      <Stack spacing={2}>
         <Box>
           <Text text="Let's create account" fontWeight="bold" />
         </Box>
@@ -206,6 +212,7 @@ const Register = () => {
           <Link href="/login" passHref>
             <ChakraLink>
               <Text
+                textDecoration="underline"
                 text="Login"
                 cursor="pointer"
                 color="red.400"
@@ -218,23 +225,34 @@ const Register = () => {
           label="Sign Up"
           onButtonPressed={() => registerFormik.handleSubmit()}
         />
-        <Flex justifyContent="flex-start" alignItems="flex-start" gap={4}>
-          <Box mt={2}>
-            <Checkbox defaultChecked color="gray.600" />
-          </Box>
-          <Box color="gray.500">
-            <span color="gray.500">
-              {`By clicking "Sign up", you agree to our`}{' '}
-              <Link href="/term-conditions" passHref>
-                <ChakraLink color="gray.500">Term and Conditions</ChakraLink>
-              </Link>{' '}
-              and that you have read out{' '}
-              <Link href="/privacy-policy" passHref>
-                <ChakraLink color="gray.500">Privacy Policy</ChakraLink>
-              </Link>
-            </span>
-          </Box>
-        </Flex>
+        <Box>
+          <Flex justifyContent="flex-start" alignItems="flex-start" gap={4}>
+            <Box mt={2}>
+              <Checkbox
+                defaultChecked={registerFormik.values.acceptTerms}
+                name="acceptTerms"
+                onChange={registerFormik.handleChange}
+                color="gray.600"
+                isInvalid={Boolean(registerFormik.errors.acceptTerms)}
+              />
+            </Box>
+            <Box color="gray.500">
+              <span color="gray.500">
+                {`By clicking "Sign up", you agree to our`}{' '}
+                <Link href="/term-conditions" passHref>
+                  <ChakraLink color="gray.500">Term and Conditions</ChakraLink>
+                </Link>{' '}
+                and that you have read out{' '}
+                <Link href="/privacy-policy" passHref>
+                  <ChakraLink color="gray.500">Privacy Policy</ChakraLink>
+                </Link>
+              </span>
+            </Box>
+          </Flex>
+          {registerFormik.errors.acceptTerms && (
+            <Text text={registerFormik.errors.acceptTerms} color="red.400" />
+          )}
+        </Box>
       </Stack>
     </Card>
   )
