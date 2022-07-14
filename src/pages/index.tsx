@@ -1,10 +1,8 @@
 import { Stack, Flex, Box } from '@chakra-ui/react'
-import { FiAlertCircle } from 'react-icons/fi'
 import moment from 'moment'
 
 import PatientDashboardLayout from 'layout/PatientDashboardLayout'
 import Card from 'components/shared/Card'
-import Button from 'components/shared/Button'
 import SEOHead from 'components/shared/SeoHead'
 import Text from 'components/shared/Text'
 import OnlineStatus from 'components/OnlineStatus'
@@ -13,6 +11,7 @@ import EstimatorTable from 'modules/home/EstimatorTable'
 import UserMiniDetail from 'modules/home/UserMiniDetail'
 import { ItemOverviewType } from 'types/ItemOverview'
 import LineChart from 'components/chart/LineChart'
+import HomeHeader from 'modules/home/HomeHeader/HomeHeader'
 
 const currentMonth = moment().format('MMM YYYY')
 
@@ -39,26 +38,7 @@ const homeStats: ItemOverviewType[] = [
 const Home = () => {
   return (
     <>
-      <Flex justifyContent={['flex-start', 'flex-end']}>
-        <Card size="sm">
-          <Stack
-            alignItems={['center']}
-            justifyContent={['center']}
-            direction={['row']}
-            spacing={[0, 0, 0, 6]}
-          >
-            <Stack alignItems={['center']} direction="row" color="red">
-              <FiAlertCircle size={25} />
-              <Text
-                text="15 patients"
-                textTransform="capitalize"
-                fontWeight="bold"
-              />
-            </Stack>
-            <Button label="View Patients" variant="ghost" />
-          </Stack>
-        </Card>
-      </Flex>
+      <HomeHeader />
       <UserMiniDetail stats={homeStats} />
       <Stack
         direction={['column', 'column', 'column', 'row']}
@@ -95,16 +75,7 @@ const Home = () => {
                   variant="h6"
                   fontWeight="bold"
                 />
-                <Flex
-                  alignItems="center"
-                  direction={[
-                    'row-reverse',
-                    'row-reverse',
-                    'row-reverse',
-                    'row',
-                  ]}
-                  gap={6}
-                >
+                <Flex alignItems="center" direction="row" gap={6}>
                   <Text
                     text="EST. Funding Status"
                     variant="h6"
