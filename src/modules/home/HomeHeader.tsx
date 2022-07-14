@@ -1,6 +1,5 @@
 import { Stack, Box } from '@chakra-ui/react'
 import Text from 'components/shared/Text'
-import Button from 'components/shared/Button'
 import React from 'react'
 import { FiAlertCircle } from 'react-icons/fi'
 
@@ -13,6 +12,7 @@ const HomeHeader = () => {
     >
       <Stack
         alignItems={['center']}
+        justifyContent={'space-between'}
         direction={['row']}
         spacing={[0, 0, 0, 6]}
         bg="white"
@@ -29,7 +29,14 @@ const HomeHeader = () => {
             fontWeight="bold"
           />
         </Stack>
-        <Button label="View Patients" variant="ghost" />
+        <Box cursor="pointer">
+          <Text
+            text="View Patients"
+            color="red.500"
+            textTransform="capitalize"
+            fontWeight="bold"
+          />
+        </Box>
       </Stack>
     </Box>
   )
