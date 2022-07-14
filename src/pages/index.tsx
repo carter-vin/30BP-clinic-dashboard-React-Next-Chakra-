@@ -11,7 +11,7 @@ import EstimatorTable from 'modules/home/EstimatorTable'
 import UserMiniDetail from 'modules/home/UserMiniDetail'
 import { ItemOverviewType } from 'types/ItemOverview'
 import LineChart from 'components/chart/LineChart'
-import HomeHeader from 'modules/home/HomeHeader/HomeHeader'
+import HomeHeader from 'modules/home/HomeHeader'
 
 const currentMonth = moment().format('MMM YYYY')
 
